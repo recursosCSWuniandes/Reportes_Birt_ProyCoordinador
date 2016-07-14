@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/chart_listing.gif</property>
+    <property name="cheatSheet">org.eclipse.birt.report.designer.ui.cheatsheet.chartlisting</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <data-sources>
+        <script-data-source name="Example" id="40">
+            <method name="open"><![CDATA[dummyObject = new Object();]]></method>
+            <method name="close"><![CDATA[dummyObject = null;]]></method>
+        </script-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="Example SET" id="41">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">Nombre</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">department</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">Nombre</property>
+                    <text-property name="displayName">Nombre</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">department</property>
+                    <text-property name="displayName">department</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">Nombre</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">department</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Example</property>
+            <method name="open"><![CDATA[count = 0;
+prog = new Packages.co.edu.uniandes.miso.web.birt.ProgramReport();
+prog.setupEJB("iiop://localhost:3700", "java:global/miso-web/ProgramLogic!co.edu.uniandes.miso.api.IProgramLogic" );
+
+//Load all programs
+programs = prog.getPrograms();
+total_rows = programs.size();]]></method>
+            <method name="fetch"><![CDATA[if (count < total_rows){
+	row["Nombre"] = programs.get(count).getName();
+	row["department"] = programs.get(count).getDepartment();
+	count = count + 1;
+	return true;
+} else return false;
+
+]]></method>
+            <method name="close"><![CDATA[programs = null;
+prog = null;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="33">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="4">
+            <property name="height">0.7291666666666666in</property>
+            <property name="width">7.9375in</property>
+            <column id="5">
+                <property name="width">7.9375in</property>
+            </column>
+            <row id="6">
+                <property name="verticalAlign">text-bottom</property>
+                <property name="height">0.7291666666666666in</property>
+                <cell id="7">
+                    <property name="verticalAlign">top</property>
+                    <image id="37">
+                        <property name="height">0.3958333333333333in</property>
+                        <property name="width">1.3125in</property>
+                        <property name="source">file</property>
+                        <expression name="uri" type="constant">logo-uniandes.jpg</expression>
+                    </image>
+                    <label id="8">
+                        <property name="fontWeight">bold</property>
+                        <property name="textUnderline">underline</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">Report Header</text-property>
+                    </label>
+                </cell>
+            </row>
+        </grid>
+        <table id="43">
+            <property name="dataSet">Example SET</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">Nombre</property>
+                    <text-property name="displayName">Nombre</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["Nombre"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">department</property>
+                    <text-property name="displayName">department</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["department"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="53"/>
+            <column id="54"/>
+            <header>
+                <row id="44">
+                    <cell id="45">
+                        <text id="58">
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[MAESTRIA
+]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="46">
+                        <text id="59">
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[DEPARTAMENTO
+
+]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="47">
+                    <cell id="48">
+                        <data id="56">
+                            <property name="resultSetColumn">Nombre</property>
+                        </data>
+                    </cell>
+                    <cell id="49">
+                        <data id="57">
+                            <property name="resultSetColumn">department</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="50">
+                    <cell id="51">
+                        <text id="60">
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[@Uniandes
+]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="52"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
