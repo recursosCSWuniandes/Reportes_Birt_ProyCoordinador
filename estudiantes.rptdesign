@@ -92,14 +92,14 @@ prog = null;]]></method>
     </page-setup>
     <body>
         <grid id="4">
-            <property name="height">0.7291666666666666in</property>
+            <property name="height">0.9166666666666666in</property>
             <property name="width">7.9375in</property>
             <column id="5">
                 <property name="width">7.9375in</property>
             </column>
             <row id="6">
                 <property name="verticalAlign">text-bottom</property>
-                <property name="height">0.7291666666666666in</property>
+                <property name="height">0.9166666666666666in</property>
                 <cell id="7">
                     <property name="verticalAlign">top</property>
                     <image id="37">
@@ -111,8 +111,11 @@ prog = null;]]></method>
                     <label id="8">
                         <property name="fontWeight">bold</property>
                         <property name="textUnderline">underline</property>
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">4px</property>
                         <property name="textAlign">center</property>
-                        <text-property name="text">Report Header</text-property>
+                        <text-property name="text">LISTA DE PROGRAMAS DE MAESTRIA</text-property>
                     </label>
                 </cell>
             </row>
@@ -158,11 +161,17 @@ prog = null;]]></method>
                 <row id="47">
                     <cell id="48">
                         <data id="56">
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">dotted</property>
+                            <property name="borderBottomWidth">thin</property>
                             <property name="resultSetColumn">Nombre</property>
                         </data>
                     </cell>
                     <cell id="49">
                         <data id="57">
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">dotted</property>
+                            <property name="borderBottomWidth">thin</property>
                             <property name="resultSetColumn">department</property>
                         </data>
                     </cell>
